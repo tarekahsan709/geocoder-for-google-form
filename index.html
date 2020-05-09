@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<style>
+    .center {
+        margin: auto;
+        width: 65%;
+        padding: 20px;
+    }
+</style>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+<div class="center">
+    <h1>Thank You!</h1>
+    <h4>Your Latitude:</h4> <span id="latitude"></span>
+    <h4>Your Longitude:</h4> <span id="longitude"></span>
+    <h4>Accuracy:</h4> <span id="accuracy"></span>
+    <hr>
+</div>
+</body>
+<script>
+    (function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, errorHandler);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    })();
+
+    function errorHandler(error) {
+        if (error) {
+            alert("Please allow location from site setting");
+        }
+        return true;
+    }
+
+    function showPosition(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var accuracy = position.coords.accuracy;
+        var positionData = [latitude, longitude, accuracy];
+        saveToResponseSheet(positionData);
+
+        document.getElementById("latitude").innerHTML = latitude;
+        document.getElementById("longitude").innerHTML = longitude;
+        document.getElementById("accuracy").innerHTML = accuracy;
+    }
+
+    function saveToResponseSheet(positionData) {
+        google.script.run.saveLocation(positionData);
+    }
+
+</script>
+</html>
