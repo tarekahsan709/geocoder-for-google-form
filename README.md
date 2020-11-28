@@ -1,5 +1,10 @@
-# geocoder-for-google-form
-The script will add device geocode data in last submit data row by clicking the link on confirmation page that shows up after hitting the submit button
- geocode data here consists of 3 columns : time to click the link, longitude & latitude and address (using reverse geocode)
- as long as clicking the link is done before next respondent submit button, data will be entered in the right row.
- Therefore for red font data you may want to check manually after completion for correct geodata entry. In the questionnaire add question about address to help checking.
+# Automatic geocode integration for google form
+
+By default Google Form doesn't have the feature to collect user location data when a form get submitted. So what this script does is it add the device(mobile/browser) location data in a google form. User needs to click the confirmation link which shows up after hitting the submit button of the google form. 
+
+The Geocode data consists of 3 columns: 
+ 1. Timestamp
+ 2. longitude & latitude
+ 3. Address (Using reverse geocode)
+
+Note: Therefore for red font data you may want to check manually after completion for correct geodata entry.
